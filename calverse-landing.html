@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcVerse — Every Calculator You'll Ever Need (Updated)</title>
+  <meta name="description" content="Thousands of free, beautiful, and fast calculators for finance, health, engineering, business, math, and more.">
+  <meta name="keywords" content="calculator, EMI, BMI, GST, SIP, loan, percentage, age, unit converter, finance, health, engineering">
+  <link rel="canonical" href="https://calverse.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calverse.com/">
+  <meta property="og:title" content="CalcVerse — Every Calculator You'll Ever Need">
+  <meta property="og:description" content="Thousands of free calculators for finance, education, engineering, health, business, and more.">
+  <meta property="og:image" content="https://calverse.com/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CalcVerse — Every Calculator You'll Ever Need">
+  <meta name="twitter:description" content="Beautiful, fast, and free calculators for every need.">
+  <meta name="twitter:image" content="https://calverse.com/og.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CalcVerse",
+    "url": "https://calverse.com",
+    "description": "Thousands of free calculators for finance, education, engineering, health, business, and more.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://calverse.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CalcVerse",
+    "url": "https://calverse.com",
+    "logo": "https://calverse.com/logo.png",
+    "sameAs": ["https://twitter.com/calverse","https://github.com/calverse"]
+  }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+    .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.5); }
+    .card-hover { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 24px 48px -12px rgba(37, 99, 235, 0.12); border-color: rgba(37,99,235,0.15); }
+    .gradient-text { background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.30; animation: float 10s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-24px) scale(1.05)} }
+    .delay-1 { animation-delay: 0s; }
+    .delay-2 { animation-delay: 3s; }
+    .delay-3 { animation-delay: 6s; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .count-up { font-variant-numeric: tabular-nums; }
+    .tab-active { background: #0F172A; color: #fff; }
+    .tab-inactive { background: transparent; color: #64748b; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- SVG Sprite -->
+  <svg style="display:none;">
+    <defs>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></symbol>
+      <symbol id="i-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/><path d="m22 8-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 8"/><path d="M2 8h20"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+      <symbol id="i-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+      <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+      <symbol id="i-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M20 18v-7a5 5 0 0 0-10 0v7"/><path d="M10 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-sigma" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7V5H6l6 6-6 6h12v-2"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.3"/><path d="M14 2v7.3"/><path d="M8.5 2h7"/><path d="M14 9.3l1.5 2.7H8.5L10 9.3"/><path d="M6.5 12 2 22h20l-4.5-10"/></symbol>
+      <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M16 18h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M12 18h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/><path d="M8 18h.01"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V2"/><path d="M12 22V8"/><path d="M20 22v-6"/><path d="M2 12h4"/><path d="M10 8h4"/><path d="M18 14h4"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+      <symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18 9c1.66 0 3-1.34 3-3s-1.34-3-3-3"/><path d="M18 21c1.66 0 3-1.34 3-3s-1.34-3-3-3"/><path d="M18 15c1.66 0 3-1.34 3-3s-1.34-3-3-3"/></symbol>
+      <symbol id="i-dumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="M21 21l-1-1"/><path d="M3 3l1 1"/><path d="M18 22l4-4"/><path d="M2 6l4-4"/><path d="M3 10l7-7"/><path d="M14 21l7-7"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+      <symbol id="i-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Announcement -->
+  <div class="bg-blue-600 text-white text-sm font-medium py-2.5 px-4 text-center relative">
+    <span class="inline-flex items-center gap-2">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+      </span>
+      CalcVerse 2.0 is live — Explore 500+ free calculators
+    </span>
+    <button onclick="this.parentElement.remove()" class="absolute right-4 top-1/2 -translate-y-1/2 opacity-80 hover:opacity-100">
+      <svg class="w-4 h-4"><use href="#i-close"/></svg>
+    </button>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
+          <svg class="w-5 h-5"><use href="#i-cal"/></svg>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-slate-900">CalcVerse</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#categories" class="hover:text-blue-600 transition">Categories</a>
+        <a href="#popular" class="hover:text-blue-600 transition">Popular</a>
+        <a href="#trending" class="hover:text-blue-600 transition">Trending</a>
+        <a href="#blog" class="hover:text-blue-600 transition">Blog</a>
+        <a href="#about" class="hover:text-blue-600 transition">About</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition shadow-lg shadow-slate-900/20">Get Started</a>
+        <button id="menuBtn" class="md:hidden p-2 text-slate-600">
+          <svg class="w-6 h-6"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100 bg-white/95 backdrop-blur px-6 py-4 space-y-3">
+      <a href="#categories" class="block text-sm font-semibold text-slate-600">Categories</a>
+      <a href="#popular" class="block text-sm font-semibold text-slate-600">Popular</a>
+      <a href="#trending" class="block text-sm font-semibold text-slate-600">Trending</a>
+      <a href="#blog" class="block text-sm font-semibold text-slate-600">Blog</a>
+      <a href="#about" class="block text-sm font-semibold text-slate-600">About</a>
+      <a href="#" class="block w-full text-center h-10 rounded-full bg-slate-900 text-white text-sm font-semibold leading-10">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-20 pb-32 overflow-hidden">
+    <div class="hero-blob w-[500px] h-[500px] bg-blue-400/30 top-[-100px] left-[-100px] delay-1"></div>
+    <div class="hero-blob w-[400px] h-[400px] bg-cyan-400/30 top-[80px] right-[-80px] delay-2"></div>
+    <div class="hero-blob w-[350px] h-[350px] bg-blue-300/20 bottom-[-40px] left-[25%] delay-3"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm text-sm font-semibold text-slate-600 mb-8">
+        <span class="flex h-2 w-2 rounded-full bg-blue-600"></span>
+        Trusted by 1,000,000+ users worldwide
+      </div>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 max-w-4xl mx-auto leading-[1.1]">
+        Every Calculator <br class="hidden md:block" />
+        <span class="gradient-text">You'll Ever Need.</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Thousands of free calculators for finance, education, engineering, health, business, construction, and more. Beautiful, fast, and accurate.
+      </p>
+
+      <div class="mt-10 max-w-2xl mx-auto relative">
+        <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+          <svg class="w-5 h-5"><use href="#i-search"/></svg>
+        </div>
+        <input type="text" placeholder="Search for calculators, formulas, tools..." class="w-full h-14 pl-12 pr-36 rounded-full bg-white border border-slate-200 shadow-xl shadow-blue-900/5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition" />
+        <button class="absolute right-2 top-2 bottom-2 bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-full text-sm font-semibold transition flex items-center gap-2 shadow-lg shadow-blue-600/20">
+          Search
+          <svg class="w-4 h-4"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">EMI</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">BMI</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">GST</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">Percentage</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">Salary</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">Age</span>
+        <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition cursor-pointer">Unit Converter</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Browse Categories</h2>
+        <p class="mt-3 text-slate-500 text-lg">Explore calculators organized by profession and need.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-dollar"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Finance</h3>
+          <p class="text-sm text-slate-500 mt-1">EMI, Loan, SIP, GST, Tax & more</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-grad"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Education</h3>
+          <p class="text-sm text-slate-500 mt-1">CGPA, Percentage, Attendance</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-wrench"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Engineering</h3>
+          <p class="text-sm text-slate-500 mt-1">Ohm's Law, Torque, Beam Load</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-heart"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Health</h3>
+          <p class="text-sm text-slate-500 mt-1">BMI, BMR, Calories, Water</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-hat"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Construction</h3>
+          <p class="text-sm text-slate-500 mt-1">Concrete, Steel, Area, Volume</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-brief"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Business</h3>
+          <p class="text-sm text-slate-500 mt-1">Profit, Margin, Commission</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-sigma"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Math</h3>
+          <p class="text-sm text-slate-500 mt-1">Scientific, Percentage, Fraction</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-6 border border-slate-100 shadow-sm relative">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition duration-300">
+            <svg class="w-6 h-6"><use href="#i-sliders"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">Utility</h3>
+          <p class="text-sm text-slate-500 mt-1">Age, Password, QR, UUID</p>
+          <svg class="w-5 h-5 absolute top-6 right-6 text-slate-300 group-hover:text-blue-500 transition"><use href="#i-arrow-up"/></svg>
+        </a>
+      </div>
+      <div class="mt-12 text-center">
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition">
+          View all 20 categories
+          <svg class="w-4 h-4"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular -->
+  <section id="popular" class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Popular Calculators</h2>
+          <p class="mt-2 text-slate-500 text-lg">Most used by our community this week.</p>
+        </div>
+        <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition">
+          View all <svg class="w-4 h-4"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">Finance</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-cal"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">EMI Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Calculate monthly installments with interactive charts and total interest.</p>
+          <div class="mt-4 flex items-center text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition translate-y-1 group-hover:translate-y-0">
+            Calculate now <svg class="w-3 h-3 ml-1"><use href="#i-arrow"/></svg>
+          </div>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-cyan-600 bg-cyan-50 px-2 py-1 rounded-md">Health</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-cyan-600 group-hover:bg-cyan-50 transition">
+              <svg class="w-4 h-4"><use href="#i-heart"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-cyan-600 transition">BMI Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Check your Body Mass Index with health tips and ideal weight range.</p>
+          <div class="mt-4 flex items-center text-xs font-bold text-cyan-600 opacity-0 group-hover:opacity-100 transition translate-y-1 group-hover:translate-y-0">
+            Calculate now <svg class="w-3 h-3 ml-1"><use href="#i-arrow"/></svg>
+          </div>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">Tax</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-percent"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">GST Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Add or remove GST instantly with split-up of CGST and SGST.</p>
+          <div class="mt-4 flex items-center text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition translate-y-1 group-hover:translate-y-0">
+            Calculate now <svg class="w-3 h-3 ml-1"><use href="#i-arrow"/></svg>
+          </div>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded-md">Utility</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100 transition">
+              <svg class="w-4 h-4"><use href="#i-clock"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-slate-700 transition">Age Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Precise age in years, months, days, and even seconds from birth date.</p>
+          <div class="mt-4 flex items-center text-xs font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition translate-y-1 group-hover:translate-y-0">
+            Calculate now <svg class="w-3 h-3 ml-1"><use href="#i-arrow"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending -->
+  <section id="trending" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Trending Now</h2>
+          <p class="mt-2 text-slate-500 text-lg">What the world is calculating today.</p>
+        </div>
+        <div class="flex gap-2 p-1 bg-slate-100 rounded-full">
+          <button onclick="switchTab('trending')" id="tab-trending" class="tab-active px-5 py-2 rounded-full text-sm font-semibold transition">Trending</button>
+          <button onclick="switchTab('recent')" id="tab-recent" class="tab-inactive px-5 py-2 rounded-full text-sm font-semibold transition">Recently Added</button>
+        </div>
+      </div>
+      <div id="panel-trending" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">
+              <svg class="w-3 h-3"><use href="#i-trend"/></svg> Hot
+            </span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-dollar"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">SIP Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Project mutual fund returns and total wealth gained over time.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">
+              <svg class="w-3 h-3"><use href="#i-trend"/></svg> Hot
+            </span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-coins"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">Compound Interest</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">See the magic of compounding with yearly growth breakdown.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">
+              <svg class="w-3 h-3"><use href="#i-trend"/></svg> Hot
+            </span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-cyan-600 group-hover:bg-cyan-50 transition">
+              <svg class="w-4 h-4"><use href="#i-dumb"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-cyan-600 transition">Calorie Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Daily calorie needs based on activity level and fitness goals.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">
+              <svg class="w-3 h-3"><use href="#i-trend"/></svg> Hot
+            </span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100 transition">
+              <svg class="w-4 h-4"><use href="#i-swap"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-slate-700 transition">Unit Converter</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Length, weight, temperature, speed, and data units instantly.</p>
+        </a>
+      </div>
+      <div id="panel-recent" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">New</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-code"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">Password Generator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Secure, random passwords with entropy strength indicator.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">New</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-flask"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">BMR Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Basal metabolic rate using Mifflin-St Jeor equation.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">New</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-hat"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">Concrete Calculator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Estimate cement, sand, and aggregate volume for slabs.</p>
+        </a>
+        <a href="#" class="group card-hover bg-white rounded-[20px] p-5 border border-slate-100 shadow-sm relative">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">New</span>
+            <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition">
+              <svg class="w-4 h-4"><use href="#i-cal"/></svg>
+            </div>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-900 group-hover:text-blue-600 transition">Invoice Generator</h3>
+          <p class="text-sm text-slate-500 mt-1 line-clamp-2">Create professional invoices with tax breakdown instantly.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-20 px-6 bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-4xl md:text-5xl font-extrabold gradient-text count-up" data-target="500">0</div>
+        <div class="mt-2 text-sm font-semibold text-slate-500 uppercase tracking-wide">Calculators</div>
+      </div>
+      <div>
+        <div class="text-4xl md:text-5xl font-extrabold gradient-text count-up" data-target="1000000">0</div>
+        <div class="mt-2 text-sm font-semibold text-slate-500 uppercase tracking-wide">Monthly Users</div>
+      </div>
+      <div>
+        <div class="text-4xl md:text-5xl font-extrabold gradient-text count-up" data-target="50">0</div>
+        <div class="mt-2 text-sm font-semibold text-slate-500 uppercase tracking-wide">ms Load Time</div>
+      </div>
+      <div>
+        <div class="text-4xl md:text-5xl font-extrabold gradient-text count-up" data-target="99">0</div>
+        <div class="mt-2 text-sm font-semibold text-slate-500 uppercase tracking-wide">% Uptime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Why CalcVerse?</h2>
+        <p class="mt-3 text-slate-500 text-lg">Built for speed, accuracy, and delight.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-5">
+            <svg class="w-7 h-7"><use href="#i-zap"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Lightning Fast</h3>
+          <p class="mt-3 text-slate-500 leading-relaxed">Server-rendered calculators that load instantly. No bloat, no waiting, just results.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-5">
+            <svg class="w-7 h-7"><use href="#i-shield"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Private & Secure</h3>
+          <p class="mt-3 text-slate-500 leading-relaxed">All calculations run in your browser. We never store your financial or health data.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center text-blue-600 mb-5">
+            <svg class="w-7 h-7"><use href="#i-check"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">100% Accurate</h3>
+          <p class="mt-3 text-slate-500 leading-relaxed">Every formula is verified by experts. We show the math so you can trust the result.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Loved by Millions</h2>
+        <p class="mt-3 text-slate-500 text-lg">Professionals, students, and founders trust CalcVerse.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm">
+          <div class="flex gap-1 text-blue-500 mb-4">
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+          </div>
+          <p class="text-slate-700 leading-relaxed">"I use the EMI and GST calculators daily for my clients. The interface is cleaner than any finance app I've paid for."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-sm">RK</div>
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Rohit Kumar</div>
+              <div class="text-xs text-slate-500">Chartered Accountant</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm">
+          <div class="flex gap-1 text-blue-500 mb-4">
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+          </div>
+          <p class="text-slate-700 leading-relaxed">"The engineering calculators saved me hours on site. Ohm's Law and concrete mix tools are incredibly accurate."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-700 font-bold text-sm">AP</div>
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Ananya Patel</div>
+              <div class="text-xs text-slate-500">Civil Engineer</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-[20px] p-8 border border-slate-100 shadow-sm">
+          <div class="flex gap-1 text-blue-500 mb-4">
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+            <svg class="w-4 h-4 fill-current"><use href="#i-star"/></svg>
+          </div>
+          <p class="text-slate-700 leading-relaxed">"As a student, CalcVerse is my go-to for CGPA and percentage conversions. It just works, no ads, no clutter."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold text-sm">SM</div>
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Sara Menon</div>
+              <div class="text-xs text-slate-500">Computer Science Student</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Frequently Asked Questions</h2>
+        <p class="mt-3 text-slate-500 text-lg">Everything you need to know about the platform.</p>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-white rounded-[20px] border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition">
+            <span class="font-semibold text-slate-900">Is CalcVerse completely free to use?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="hidden px-6 pb-6 text-slate-600 leading-relaxed">Yes. Every calculator on CalcVerse is 100% free. No hidden fees, no paywalls, and no mandatory sign-ups. We believe useful tools should be accessible to everyone.</div>
+        </div>
+        <div class="bg-white rounded-[20px] border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition">
+            <span class="font-semibold text-slate-900">Are the calculations accurate?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="hidden px-6 pb-6 text-slate-600 leading-relaxed">All formulas are verified by domain experts and cross-checked against industry standards. We also display the formula and step-by-step breakdown for transparency.</div>
+        </div>
+        <div class="bg-white rounded-[20px] border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition">
+            <span class="font-semibold text-slate-900">Do you store my input data?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="hidden px-6 pb-6 text-slate-600 leading-relaxed">No. CalcVerse is privacy-first. All calculations happen locally in your browser unless you explicitly use a cloud feature like favorites or history.</div>
+        </div>
+        <div class="bg-white rounded-[20px] border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition">
+            <span class="font-semibold text-slate-900">Can I use CalcVerse on mobile?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="hidden px-6 pb-6 text-slate-600 leading-relaxed">Absolutely. CalcVerse is fully responsive and works seamlessly on phones, tablets, and desktops. You can also install it as a PWA.</div>
+        </div>
+        <div class="bg-white rounded-[20px] border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition">
+            <span class="font-semibold text-slate-900">How often are new calculators added?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="hidden px-6 pb-6 text-slate-600 leading-relaxed">We release new calculators weekly. You can follow our blog or newsletter to get notified about the latest tools and updates.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="px-6 pb-24">
+    <div class="max-w-5xl mx-auto rounded-[20px] bg-slate-900 p-10 md:p-16 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl"></div>
+      <div class="relative z-10 text-center max-w-xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Join 50,000+ Calculators</h2>
+        <p class="mt-3 text-slate-300">Get new calculators, formula guides, and productivity tips delivered weekly.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed!'; this.querySelector('button').classList.add('bg-emerald-600');" class="mt-8 flex flex-col sm:flex-row gap-3">
+          <input type="email" required placeholder="Enter your email" class="flex-1 bg-white/10 border border-white/20 rounded-full px-6 py-3 text-white placeholder-slate-400 focus:outline-none focus:bg-white/20 focus:border-white/40 transition" />
+          <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg shadow-blue-600/20">Subscribe</button>
+        </form>
+        <p class="mt-4 text-xs text-slate-400">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+      <div class="col-span-2 lg:col-span-2">
+        <a href="#" class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white">
+            <svg class="w-4 h-4"><use href="#i-cal"/></svg>
+          </div>
+          <span class="text-lg font-bold text-white tracking-tight">CalcVerse</span>
+        </a>
+        <p class="text-sm leading-relaxed max-w-xs">Every Calculator You'll Ever Need. Thousands of free, beautiful, and accurate tools for work, school, and life.</p>
+        <div class="mt-6 flex gap-4">
+          <a href="#" class="hover:text-white transition"><svg class="w-5 h-5"><use href="#i-globe"/></svg></a>
+          <a href="#" class="hover:text-white transition"><svg class="w-5 h-5"><use href="#i-mail"/></svg></a>
+          <a href="#" class="hover:text-white transition"><svg class="w-5 h-5"><use href="#i-code"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">Product</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">Categories</a></li>
+          <li><a href="#" class="hover:text-white transition">Popular</a></li>
+          <li><a href="#" class="hover:text-white transition">Trending</a></li>
+          <li><a href="#" class="hover:text-white transition">New Additions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">Company</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">About</a></li>
+          <li><a href="#" class="hover:text-white transition">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">Legal</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+      <p>2026 CalcVerse Inc. All rights reserved.</p>
+      <p>Made with precision for humans.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('svg');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Trending tabs
+    function switchTab(tab) {
+      document.getElementById('panel-trending').classList.add('hidden');
+      document.getElementById('panel-recent').classList.add('hidden');
+      document.getElementById('tab-trending').className = 'tab-inactive px-5 py-2 rounded-full text-sm font-semibold transition';
+      document.getElementById('tab-recent').className = 'tab-inactive px-5 py-2 rounded-full text-sm font-semibold transition';
+      document.getElementById('panel-' + tab).classList.remove('hidden');
+      document.getElementById('tab-' + tab).className = 'tab-active px-5 py-2 rounded-full text-sm font-semibold transition';
+    }
+
+    // Counter animation
+    const counters = document.querySelectorAll('.count-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = +entry.target.getAttribute('data-target');
+          const duration = 2000;
+          const start = performance.now();
+          const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(ease * target);
+            if (target >= 1000000) {
+              entry.target.textContent = (current / 1000000).toFixed(1) + 'M+';
+            } else if (target === 99) {
+              entry.target.textContent = current + '.9%';
+            } else {
+              entry.target.textContent = current + '+';
+            }
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
